@@ -1,1 +1,13 @@
 <p>list-employees works!</p>
+
+
+<div class="card card-block boxshadow" *ngFor="let emp of Employees">
+     <div class="pad10">
+        <span><b>Employee Name: </b></span>
+         <span class="card-title">{{emp.EmployeName}}</span>
+     </div>
+    <div  class="pad10">
+        <span><b>Designation: </b></span>
+        <span class="card-text">{{emp.Designation}}</span>
+    </div>
+</div>

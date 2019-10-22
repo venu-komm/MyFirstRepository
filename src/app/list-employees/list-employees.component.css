@@ -1,0 +1,7 @@
+.pad10{
+padding: 10px;
+}
+.boxshadow{
+    box-shadow: 0px 0px 0px 3px gainsboro;
+    margin-bottom: 10px;
+}
