@@ -1,13 +1,24 @@
-<p>list-employees works!</p>
-
-
-<div class="card card-block boxshadow" *ngFor="let emp of Employees">
-     <div class="pad10">
-        <span><b>Employee Name: </b></span>
-         <span class="card-title">{{emp.EmployeName}}</span>
-     </div>
-    <div  class="pad10">
-        <span><b>Designation: </b></span>
-        <span class="card-text">{{emp.Designation}}</span>
+<div class="col-md-12 pad-b20-0">
+    <button [routerLink]="['/save','']">Add Employee</button>
+</div>
+<div class="col-md-12 pad0 display-InlineBox pad-b20-0">
+    <input id="namesearch" [(ngModel)]="searchtext" class="form-control margin-r20" style="width:250px;" placeholder="enter text for search" > 
+    <button  class="btn btn-info" (click)="test()">Search</button>
+</div>
+<div class="col-md-12 pad0 card card-block boxshadow display-InlineBox" 
+*ngFor="let emp of employees">
+    <div class="col-md-10 pad0">
+        <div class="pad10">
+            <span><b>Employee Name: </b></span>
+            <span class="card-title">{{emp.Name}}</span>
+        </div>
+        <div class="pad10">
+            <span><b>Designation: </b></span>
+            <span class="card-text">{{emp.Designation}}</span>
+        </div>
+    </div>
+    <div class="col-md-2 pad0">
+        <button class="right-float display-Inherit margin20"  [routerLink]="['/save/',emp.EmpId]" >Edit</button>
+        <button class="right-float display-Inherit margin20"  (click)="deleteEmployee(emp.EmpId)" >Delete</button>
     </div>
 </div>

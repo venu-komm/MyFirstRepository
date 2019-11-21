@@ -1,0 +1,57 @@
+    <div class="example-header">
+        <button (click)="opneCreateEmployee()" class="btn btn-primary" >New Employee</button>
+        <mat-form-field class="pad-l30">
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+    </div>
+      
+    <div class="example-container mat-elevation-z8">
+      
+    <table mat-table [dataSource]="employees" matSort >
+        <ng-container matColumnDef="Name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="hide-arrow">Employee Name</th>
+            <td mat-cell *matCellDef="let emp">{{emp.Name}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Designation">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header  class="hide-arrow">Designation</th>
+            <td mat-cell *matCellDef="let emp">{{emp.Designation}}</td>
+        </ng-container>
+        
+      <ng-container matColumnDef="details">
+        <th mat-header-cell *matHeaderCellDef> Details </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button color="primary" (click)="redirectToDetails(element.EmpId)">
+              <mat-icon class="mat-18">reorder</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+     
+      <ng-container matColumnDef="update">
+          <th mat-header-cell *matHeaderCellDef> Update </th>
+          <td mat-cell *matCellDef="let emp">
+            <button mat-icon-button color="accent" (click)="redirectToUpdate(emp.EmpId)">
+                <mat-icon class="mat-18">system_update</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+     
+        <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef> Delete </th>
+            <td mat-cell *matCellDef="let emp">
+              <button mat-icon-button color="warn" (click)="redirectToDelete(emp.EmpId)">
+                  <mat-icon class="mat-18">delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="noData">
+                <mat-footer-cell *matFooterCellDef colspan="2">
+                   No data.
+                </mat-footer-cell>
+             </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns" >/tr>
+        <!-- <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true" >
+        </tr> -->
+    </table>
+    <mat-paginator [pageSizeOptions]="[10,20,50,100]" showFirstLastButtons ></mat-paginator>
+    </div>

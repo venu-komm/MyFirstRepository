@@ -1,0 +1,19 @@
+
+table {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-width: 500px;
+}
+th{
+    background-color: slategray;
+    color: white;
+    font-weight: bold;
+} 
+th.mat-header-cell {
+    text-align: left;
+    max-width: 300px;
+}
+::ng-deep .hide-arrow .mat-sort-header-arrow {
+    color: #fff;
+}

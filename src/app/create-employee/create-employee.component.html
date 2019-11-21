@@ -1,1 +1,36 @@
-<p>create-employee works!</p>
+<div class="col-md-12 pad-b20-0 right-float">
+    <button routerLink="/list" >Back To List</button>
+</div>
+ <form [formGroup]="employeeForm" (ngSubmit)="SaveEmployee(employeeForm.value)">
+     
+<div class="card card-block boxshadow">
+    <!-- <input type="hidden" id="EmpId" formControlName="EmpId"> -->
+    <div class="col-md-12 pad10">
+        <label for="Name" class="pad-r10" >Employee Name: </label>
+        <input id="Name" formControlName="Name" name="Name" class="formcontrol form-control col-md-4" [ngClass]="{ 'is-invalid': submitted && f.Name.errors }">
+        <div *ngIf="submitted && f.Name.errors" class="invalid-feedback">
+            <div *ngIf="f.Name.errors.required">Name is required</div>
+        </div>
+    </div>
+    <div class="col-md-12 pad10">
+        <label for="designation" class="pad-r10" >Designation: </label>
+        <!-- <input id="designation" formControlName="Designation" name="designation" class="formcontrol form-control col-md-4"  [ngClass]="{ 'is-invalid': submitted && f.Designation.errors }">
+         -->
+         <select id="designation" formControlName="Designation" name="designation" 
+            class="formcontrol form-control col-md-4" 
+          [ngClass]="{ 'is-invalid': submitted && f.Designation.errors }">
+             <option value="">Select Designation</option>
+             <option *ngFor="let d of designations" [value]="d.id">
+                 {{d.name}}
+            </option>
+         </select>
+        <div *ngIf="submitted && f.Designation.errors" class="invalid-feedback">
+                <div *ngIf="f.Designation.errors.required">Designation is required</div>
+            </div>
+    </div>
+    <div class="col-md-12 pad10" style="text-align: center;">
+        <button type="submit" class="btn btn-primary" >Save</button>
+    </div>
+</div>
+
+</form>
